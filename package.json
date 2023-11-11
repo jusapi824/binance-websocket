@@ -1,0 +1,16 @@
+{
+  "name": "websockets01",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "node index.js"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "express": "^4.18.2",
+    "node-binance-api": "^0.13.1",
+    "ws": "^8.14.2"
+  }
+}
