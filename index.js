@@ -2,6 +2,10 @@ const express = require('express');
 const app = express();
 const binance = require('./binanceConfig');
 
+app.get('/hello', (req, res) => {
+    res.send('Hello World');
+} );
+
 app.get('/', (req, res) => {
     // res.send('Hello World');
     // Periods: 1m,3m,5m,15m,30m,1h,2h,4h,6h,8h,12h,1d,3d,1w,1M
