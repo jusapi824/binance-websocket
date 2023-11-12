@@ -1,12 +1,15 @@
+
 const express = require('express');
 const app = express();
 const binance = require('./binanceConfig');
 
-app.get('/hello', (req, res) => {
-    res.send('Hello World');
-} );
+app.set('port', process.env.PORT || 4000)
 
 app.get('/', (req, res) => {
+    res.send('Hello World 2');
+} );
+
+app.get('/crypto', (req, res) => {
     // res.send('Hello World');
     // Periods: 1m,3m,5m,15m,30m,1h,2h,4h,6h,8h,12h,1d,3d,1w,1M
 binance.websockets.candlesticks(['BNBBTC'], "1m", (candlesticks) => {
@@ -22,6 +25,7 @@ binance.websockets.candlesticks(['BNBBTC'], "1m", (candlesticks) => {
   });
 });
 
-app.listen(3000, () => {
-    console.log('Server listening on port 3000');
+// Starting the Server
+app.listen(app.get('port'), ()=>{ // Se inicia el servidor en el puerto configurada
+    console.log(`Server running o localhost:${app.get('port')} `)
 });
