@@ -1,10 +1,10 @@
 
 const WebSocket = require('ws');
 
-app.set('port', process.env.PORT || 4000)
+const WSPORT =  process.env.PORT || 4000;
 
 const wsServer = new WebSocket.Server({
-    port: app.set('port')
+    port: WSPORT
 });
 
 wsServer.on('connection', function (socket) {
@@ -29,4 +29,4 @@ wsServer.on('connection', function (socket) {
 
 });
 
-console.log( (new Date()) + " Server is listening on port " + PORT);
+console.log( (new Date()) + " Server is listening on port " + WSPORT);
