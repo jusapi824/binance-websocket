@@ -1,7 +1,8 @@
 
 const WebSocket = require('ws');
 
-const WSPORT =  process.env.PORT || 4000;
+// const WSPORT =  process.env.PORT || 4000;
+const WSPORT =  process.env.PORT || Deno.env.get("PORT") || 4000;
 
 const wsServer = new WebSocket.Server({
     port: WSPORT

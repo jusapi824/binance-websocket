@@ -1,7 +1,7 @@
 const websocket = require('ws');
 
 // const serverAdress = 'ws://localhost:3001';
-const serverAdress = 'wss://websocket-test-jp.glitch.me/';
+const serverAdress = 'wss://binancewebsocket.onrender.com';
 const ws = new websocket(serverAdress, {
    'user-agent': 'Mozilla',
 });
