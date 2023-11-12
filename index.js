@@ -2,8 +2,40 @@
 const express = require('express');
 const app = express();
 const binance = require('./binanceConfig');
+const WebSocket = require('ws');
 
 app.set('port', process.env.PORT || 4000)
+
+app.get('/websocket', (req,res)=>{
+    const wsServer = new WebSocket.Server({
+        port: 3000
+        // port: app.get('port')
+    });
+    wsServer.on('connection', function (socket) {
+        // Some feedback on the console
+        console.log("A client just connected");
+    
+        // Attach some behavior to the incoming socket
+        socket.on('message', function (msg) {
+            console.log("Received message from client: "  + msg);
+            // socket.send("Take this back: " + msg);
+    
+            // Broadcast that message to all connected clients
+            wsServer.clients.forEach(function (client) {
+                client.send("Someone said: " + msg);
+            });
+    
+        });
+    
+        socket.on('close', function () {
+            console.log('Client disconnected');
+        })
+    
+    });
+    
+    console.log( (new Date()) + " Server is listening on port " + PORT);
+})
+
 
 app.get('/', (req, res) => {
     res.send('Hello World 2');
